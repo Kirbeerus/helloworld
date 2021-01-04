@@ -1,0 +1,6 @@
+{%  extends 'base.html.twig' %}
+{% block body %}
+    {% for nom in liste %}
+        <a href="{{ path('hello',{'prenom': nom}) }}"><p>{{ nom }}</p></a>
+    {% endfor %}
+{% endblock %}
