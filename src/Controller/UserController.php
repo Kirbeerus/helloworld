@@ -78,4 +78,10 @@ class UserController extends AbstractController
         return new Response("role affecter");
     }
 
+    public function afficherUser(UserRepository $userRepository){
+        $listeUser = $userRepository->findAll();
+
+
+    }
+
 }
