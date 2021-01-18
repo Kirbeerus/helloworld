@@ -1,3 +1,7 @@
+acceuil:
+    path: /
+    controller: App\Controller\Forms\LoginController::accueil
+
 hello:
     path: /hello/{prenom}
     controller: App\Controller\HelloWorldController::hello
@@ -16,4 +20,14 @@ form:
 formReceive:
     path: /form
     controller: App\Controller\HelloWorldController::form_receive
+    methods: POST
+
+login:
+    path: /login
+    controller: App\Controller\Forms\LoginController::login
+    methods: GET
+
+loginVerif:
+    path: /login
+    controller: App\Controller\Forms\LoginController::loginPost
     methods: POST
