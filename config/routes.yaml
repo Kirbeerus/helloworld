@@ -39,3 +39,15 @@ crerCake:
 getCake:
     path: /cakeGet/{id}
     controller: App\Controller\CakeController::getCakeById
+
+crerUser:
+    path: /userAdd
+    controller: App\Controller\UserController::createUser
+
+crerRole:
+    path: /roleAdd
+    controller: App\Controller\UserController::createRole
+
+affectRole:
+    path: /affectRole/{rid}-{uid}
+    controller: App\Controller\UserController::affectRole
