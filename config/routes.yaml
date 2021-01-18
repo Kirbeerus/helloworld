@@ -31,3 +31,11 @@ loginVerif:
     path: /login
     controller: App\Controller\Forms\LoginController::loginPost
     methods: POST
+
+crerCake:
+    path: /cakeAdd
+    controller: App\Controller\CakeController::createCake
+
+getCake:
+    path: /cakeGet/{id}
+    controller: App\Controller\CakeController::getCakeById
