@@ -6,10 +6,12 @@ namespace App\Controller;
 
 use App\Entity\Role;
 use App\Entity\User;
+use App\Form\UserLoginType;
 use App\Repository\RoleRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends AbstractController
@@ -81,7 +83,36 @@ class UserController extends AbstractController
     public function afficherUser(UserRepository $userRepository){
         $listeUser = $userRepository->findAll();
 
-
+        return $this->render('utilisateurs.html.twig',[
+           'utilisateurs' => $listeUser
+        ]);
     }
+
+    public function connexionUser(){
+        $form = $this->createForm(UserLoginType::class);
+
+        return $this->render('connexionUser.html.twig',[
+            'form' => $form->createView()
+        ]);
+    }
+
+        public function verificationUser(Request $request,UserRepository $userRepository){
+            $form = $this->createForm(UserLoginType::class);
+            $form->handleRequest($request);
+
+            if($form->isSubmitted() && $form->isValid()){
+                $data = $form->getData();
+                $login = $data["login"];
+                $password = $data["password"];
+                $user = $userRepository->findUser($login,$password );
+                if($user!=null){
+                    return $this->render('connecter.html.twig',["user"=>$user[0]]);
+                }else{
+                    return $this->redirectToRoute('connexionUser');
+                }
+            }else{
+                return $this->redirectToRoute('connexionUser');
+            }
+        }
 
 }

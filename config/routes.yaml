@@ -51,3 +51,17 @@ crerRole:
 affectRole:
     path: /affectRole/{rid}-{uid}
     controller: App\Controller\UserController::affectRole
+
+afficheUser:
+    path: /afficherUtilisateur
+    controller: App\Controller\UserController::afficherUser
+
+connexionUser:
+    path: /connexionUser
+    controller: App\Controller\UserController::connexionUser
+    methods: GET
+
+verifUser:
+    path: /connexionUser
+    controller: App\Controller\UserController::verificationUser
+    methods: POST
